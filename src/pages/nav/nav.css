@@ -1,0 +1,6 @@
+.Dropdown {
+    position: fixed;
+    z-index: 999;
+    bottom: 50px;
+    left: 50px;
+}

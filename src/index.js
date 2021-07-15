@@ -1,17 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers';
+import Index from './pages/index';
+
+// 日志
+import logger from 'redux-logger';
+// 开发调试工具
+import { composeWithDevTools } from 'redux-devtools-extension';
+// 中间件
+import thunk from 'redux-thunk';
+// 路由
+import { BrowserRouter as Router } from 'react-router-dom';
+// 处理 Token
+import verifyJwtToken from './service/indexService';
+
+
+// 创建 Store
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk, logger)
+  )
+);
+
+verifyJwtToken(store);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router>
+      <Index />
+    </Router>
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

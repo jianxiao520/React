@@ -1,0 +1,20 @@
+.LoginParent:hover {
+    box-shadow: rgb(73 73 73 / 42%) -0.7rem 0.7rem 1.4rem 0.6rem;
+}
+
+.LoginParent {
+    padding: 3rem;
+    border-radius: 0rem;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 10%), 0px 10px 22px rgb(0 0 0 / 16%);
+    background-color: white;
+    transition-property: all;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;
+    min-height: 483px;
+}
+
+.ScInput {
+    margin-top: 1rem;
+    border-radius: 2rem;
+}
+
